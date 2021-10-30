@@ -1,0 +1,38 @@
+<style>
+
+  #myVideo {
+    position: fixed;
+    object-fit:cover;
+    bottom: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100vh;
+    z-index: -1;
+  }
+</style>
+
+<video autoplay muted loop id="myVideo">
+  <source src="/assets/images/out2.mp4" type="video/mp4">
+</video>
+<section class="hero is-fullheight has-text-centered" id="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-white is-size-1 is-uppercase has-text-weight-bold">
+        {{site.title}}
+      </h1>
+      <div class="bulma-clearfix-mixin">
+
+        <iframe style="border: 0; width: 360px; height: 600px;" src="https://bandcamp.com/EmbeddedPlayer/album=605088933/size=large/bgcol=333333/linkcol=2ebd35/transparent=true/" seamless><a href="https://lunchspectre.bandcamp.com/album/coefficient">Coefficient by Lunch Spectre</a></iframe>
+      </div>
+      <h3 class="subtitle has-text-white-bis is-uppercase has-text-weight-medium is-marginless">
+        {{site.description}}
+      </h3>
+      <hr>
+      
+      <a href="#contact"
+        class="button is-white is-rounded is-outlined is-uppercase has-text-weight-normal">Read More</a>
+      </a>
+
+    </div>
+  </div>
+</section>

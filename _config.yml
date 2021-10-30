@@ -1,0 +1,97 @@
+# WhatATheme
+markdown: kramdown
+
+# URL of the Site
+# url: 'https://lunch.band'
+# Base URL of the Site (i.e., Name of the Repository in which the Site is hosted)
+# baseurl: 'https://lunch.band'
+
+# Title of the Site
+title: Lunch Spectre
+# Description of the Site
+description: Coefficient - On Bandcamp now, and available everywhere starting 10/31
+# URL of Image of the Site
+site-image: /assets/images/lslogo.jpg
+# Keywords of the Site
+site-keywords: Music, Original, Art, Funk, Space, Groove
+# URL for the Image of custom Favicon
+favicon-url: 
+
+# URL of the Image of Custom Hero Image (i.e., the image in the background of the very first section of the Homepage)
+heroimage: ''
+
+# Social Media and Contact
+# If you don't want to use any icon, you can leave them blank.
+email: lunchspectre@gmail.com
+facebook_username: ''
+twitter_username: ''
+instagram_username: lunchspectre
+linkedin_username: ''
+github_username:  ''
+youtube_channel_id: ''
+reddit_username: ''
+behance_username: ''
+dribbble_username: ''
+spotify_username: ''
+
+# Google Analytics
+google-analytics: 
+
+# Disqus
+disqus-shortname: 
+
+# Name of the Author
+author-name: Lunch Spectre
+# URL for the Image of the Author
+author-image: /assets/images/cas.jpg
+# 60 Words About the Author
+author-about: "The haunting funk of Lunch Spectre is the result of years of friendship, ups and downs, and a shared love of music, bass, and weird things. Chad Haugejorden and Sonja Q Leaf are Lunch Spectre. This partial product of the pandemic was a long time coming, and is some of their most personally-satisfying work."
+# URL to the Author's Profile (i.e., Github, Twitter, Stackoverflow, etc)
+author-url: https://github.com/sonjaq
+
+# SASS
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Build settings
+plugins:
+  - jekyll-admin
+  - jekyll-feed
+
+# Permalink
+permalink: "blog/:title"
+
+# Compress
+compress_html:
+  clippings: all
+
+# Defaults
+defaults:
+  -
+    scope:
+      type: 'posts'
+    values:
+      layout: post
+      post-image: ""
+      description: ""
+      tags:
+        - ""
+  -
+    scope:
+      type: 'pages'
+    values:
+      layout: page
+
+# Exclude
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
