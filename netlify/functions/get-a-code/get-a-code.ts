@@ -2,7 +2,8 @@ import { Handler } from '@netlify/functions'
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 const { API_KEY, SUPABASE_URL } = process.env;
-const supabase: SupabaseClient = createClient(SUPABASE_URL, API_KEY);
+const NETLIFY_DEV = process.env.NETLIFY_DEV || 'false';
+const supabase: SupabaseClient = createClient(SUPABASE_URL, API_KEY)
 
 const getCodeCard: any = (code, album) => {
   let cover = '/assets/images/lslogo.jpg';
@@ -20,8 +21,14 @@ const getCodeCard: any = (code, album) => {
       <div class="media">
         <div class="media-content">
           <p class="title is-4">${album}</p>
-          <p class="mt-4 subtitle is-6">${code}</p>
-          Click to redeem and download instantly <a href="https://lunchspectre.bandcamp.com/yum?code=${code}" target="_blank">Bandcamp</a>.
+          <p class="mt-4 subtitle is-6">${code}${NETLIFY_DEV === 'true' ? " DEV" : ""}</p>
+          Click to redeem and download instantly!
+          <a
+          id="redeem-code"
+          href="https://lunchspectre.bandcamp.com/yum?code=${NETLIFY_DEV !== 'true' ? code : ""}"
+          target="_blank"
+          class="button is-black is-fullwidth mt-4">
+          Bandcamp</a>.
         </div>
       </div>
     </div>
@@ -57,14 +64,16 @@ export const handler: Handler = async (event, context) => {
     }
     if (data?.length > 0) {
       const { code, album } = data[0];
-    
-      await supabase
-        .from('code')
-        .update({
-          available: false
-        })
-        .match({ code });
-      
+
+      // Allow testing without burning a code
+      if (NETLIFY_DEV !== 'true') {
+        await supabase
+          .from('code')
+          .update({
+            available: false
+          })
+          .match({ code });
+      }
       return {
         statusCode: 200,
         body: JSON.stringify({

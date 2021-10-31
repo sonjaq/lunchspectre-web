@@ -9,13 +9,13 @@ markdown: kramdown
 # Title of the Site
 title: Lunch Spectre
 # Description of the Site
-description: Coefficient - On Bandcamp now, and available everywhere starting 10/31
+description: Coefficient - On available now!
 # URL of Image of the Site
 site-image: /assets/images/lslogo.jpg
 # Keywords of the Site
 site-keywords: Music, Original, Art, Funk, Space, Groove
 # URL for the Image of custom Favicon
-favicon-url: 
+favicon-url:
 
 # URL of the Image of Custom Hero Image (i.e., the image in the background of the very first section of the Homepage)
 heroimage: ''
@@ -35,10 +35,10 @@ dribbble_username: ''
 spotify_username: ''
 
 # Google Analytics
-google-analytics: 
+google-analytics:
 
 # Disqus
-disqus-shortname: 
+disqus-shortname:
 
 # Name of the Author
 author-name: Lunch Spectre
