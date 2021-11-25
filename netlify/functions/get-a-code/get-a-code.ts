@@ -9,6 +9,8 @@ const getCodeCard: any = (code, album) => {
   let cover = '/assets/images/lslogo.jpg';
   if (album === 'Coefficient') {
     cover = '/assets/images/cover.jpg'
+  } else if ( album === 'Prismatic' ) {
+    cover ='/assets/images/prismatic-cover.jpg'
   }
   return `
   <div class="mt-4 card">
@@ -43,7 +45,7 @@ export const handler: Handler = async (event, context) => {
       .from('code')
       .select('code, album')
       .eq('available', true)
-      .order('album', { ascending: true }); // Gets all codes, Coefficient first
+      .order('album', { ascending: false }); // Gets all codes, prismatic first
 
     if (data?.length === 0) {
       return {
