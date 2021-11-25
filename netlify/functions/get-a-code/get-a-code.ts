@@ -45,6 +45,7 @@ export const handler: Handler = async (event, context) => {
       .from('code')
       .select('code, album')
       .eq('available', true)
+      .eq('album', 'Prismatic')
       .order('album', { ascending: false }); // Gets all codes, prismatic first
 
     if (data?.length === 0) {
