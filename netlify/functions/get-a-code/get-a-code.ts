@@ -4,6 +4,11 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 const { API_KEY, SUPABASE_URL } = process.env;
 const NETLIFY_DEV = process.env.NETLIFY_DEV || 'false';
 const supabase: SupabaseClient = createClient(SUPABASE_URL, API_KEY)
+const albums = [
+  "Prismatic",
+  "Coefficient"
+]
+
 
 const getCodeCard: any = (code, album) => {
   let cover = '/assets/images/lslogo.jpg';
@@ -60,6 +65,9 @@ export const handler: Handler = async (event, context) => {
 
   let album = event.queryStringParameters?.album ? event.queryStringParameters.album : "Prismatic";
   console.log(album);
+  if (!albums.includes(album)) {
+    return noCodesFound(400);
+  }
   try {
     const { data } = await supabase
       .from('code')

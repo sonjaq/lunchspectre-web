@@ -2,11 +2,11 @@
     <div class="hero-body">
         <div class="container">
             <script>
-                function getCode(el) {
+                function getCode(el, album) {
                     el.disabled = true;
                     el.innerHTML = '<i class="fa fa-spinner fa-spin"></i>';
                     var x = document.getElementById("code-placeholder");
-                    fetch('/.netlify/functions/get-a-code').then(function (response) {
+                    fetch(`/.netlify/functions/get-a-code?album=${album}`).then(function (response) {
                         return response.json();
                     }).then(function (data) {
                         x.innerHTML = data.html;
@@ -15,8 +15,11 @@
                 }
             </script>
             <h2 class="has-text-black hero has-text-weight-bold is-size-2">Free downloads at Bandcamp</h2>
-            <button onclick="getCode(this)" class="mt-3 button is-rounded is-uppercase is-black is-two-fifths">
-                GIMME A CODE
+            <button onclick="getCode(this, 'Prismatic')" class="mt-3 button is-rounded is-uppercase is-black is-two-fifths">
+                GIMME PRISMATIC FOR FREE
+            </button>
+            <button onclick="getCode(this, 'Coefficient')" class="mt-3 button is-rounded is-uppercase is-black is-two-fifths">
+                GIMME COEFFICIENT FOR FREE
             </button>
             <div id="code-placeholder"></div>
         </div>
