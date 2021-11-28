@@ -62,22 +62,22 @@ function noCodesFound(errCode: number = 200) {
 }
 
 export const handler: Handler = async (event, context) => {
-
   let album = event.queryStringParameters?.album ? event.queryStringParameters.album : "Prismatic";
   console.log(album);
   if (!albums.includes(album)) {
     return noCodesFound(400);
   }
   try {
-    const { data } = await supabase
+    const req = await supabase
       .from('code')
       .select('code, album')
-      .eq('available', true)
-      .filter('album', 'eq', album);
-    console.log(data);
+      .eq('album', album)
+      .eq('available', true);
+    const data = req.data;
+    console.log(req,data, req.error?.message);
     if (data?.length === 0) {
       console.error('No codes available');
-      return noCodesFound(200);
+      return noCodesFound(req.status);
     }
     if (data?.length > 0) {
       const { code, album } = data[0];
