@@ -38,32 +38,38 @@ const getCodeCard: any = (code, album) => {
   `
 }
 
+function noCodesFound(errCode: number = 200) {
+  return {
+    statusCode: errCode,
+    body: JSON.stringify({
+      message: 'No codes available',
+      html: ` <div class="mt-4 card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            I'm sorry, there are no codes available. Please check back later or reach out to @lunchspectre on Instagram.
+          </div>
+        </div>
+      </div>
+    </div>`
+    })
+  }
+}
+
 export const handler: Handler = async (event, context) => {
 
+  let album = event.queryStringParameters?.album ? event.queryStringParameters.album : "Prismatic";
+  console.log(album);
   try {
     const { data } = await supabase
       .from('code')
       .select('code, album')
       .eq('available', true)
-      .eq('album', 'Prismatic')
-      .order('album', { ascending: false }); // Gets all codes, prismatic first
-
+      .filter('album', 'eq', album);
+    console.log(data);
     if (data?.length === 0) {
-      return {
-        statusCode: 200,
-        body: JSON.stringify({
-          message: 'No codes available',
-          html: ` <div class="mt-4 card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-content">
-                I'm sorry, there are no codes available. Please check back later.
-              </div>
-            </div>
-          </div>
-        </div>`
-        })
-      }
+      console.error('No codes available');
+      return noCodesFound(200);
     }
     if (data?.length > 0) {
       const { code, album } = data[0];
@@ -88,21 +94,11 @@ export const handler: Handler = async (event, context) => {
       }
     }
     else {
-      return {
-        statusCode: 200,
-        body: JSON.stringify({
-          message: 'No codes available'
-        })
-      }
+      return noCodesFound(419);
     }
   } catch (error) {
-    console.log(error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        message: `Something went wrong`,
-      }),
-    }
+    console.error(error.message, error.stack);
+    return noCodesFound(500);
   }
 }
 
