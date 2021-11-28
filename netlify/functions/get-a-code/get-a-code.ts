@@ -52,7 +52,7 @@ function noCodesFound(errCode: number = 200) {
       <div class="card-content">
         <div class="media">
           <div class="media-content">
-            I'm sorry, there are no codes available. Please check back later or reach out to @lunchspectre on Instagram.
+            BOOOOO! There are no codes available or something broke. Please check back later or reach out to Lunch Spectre on <a href="https://instagram.com/lunchspectre">Instagram</a> or via <a href="mailto:lunchspectre@gmail.com?subject=Website Codes">email</a>.
           </div>
         </div>
       </div>
