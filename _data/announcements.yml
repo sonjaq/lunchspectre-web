@@ -1,0 +1,13 @@
+# Announcements Configuration
+# Add new announcements here. Only announcements with active: true will be displayed.
+# The most recent active announcement will be shown.
+
+- title: "Live Debut"
+  message: "Join us for our live debut on January 31, 2026 at 7pm at the Eagles34 in Minneapolis!"
+  date: "2026-01-31"
+  time: "7:00 PM"
+  venue: "Eagles34"
+  location: "Minneapolis"
+  active: true
+  link: ""
+  link_text: ""

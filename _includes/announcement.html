@@ -1,0 +1,24 @@
+{% comment %}
+  Announcement Banner Component
+  Displays active announcements from _data/announcements.yml
+{% endcomment %}
+
+{% if site.data.announcements %}
+  {% for announcement in site.data.announcements %}
+    {% if announcement.active %}
+      <section class="announcement-banner" id="announcement">
+        <div class="container">
+          <div class="announcement-content">
+            <h2 class="announcement-title">{{ announcement.title }}</h2>
+            <p class="announcement-message">{{ announcement.message }}</p>
+            {% if announcement.link and announcement.link != "" %}
+              <a href="{{ announcement.link }}" class="announcement-link button is-white is-rounded is-outlined" target="_blank" rel="noopener noreferrer">
+                {{ announcement.link_text | default: "Learn More" }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
+{% endif %}
